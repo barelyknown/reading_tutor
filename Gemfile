@@ -20,3 +20,6 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails'
 
 # form_for replacement
 gem 'simple_form'
+
+# wordnik api client
+gem 'wordnik'
