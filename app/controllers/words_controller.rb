@@ -5,7 +5,7 @@ class WordsController < ApplicationController
   end
 
   def create
-    redirect_to word_path(id: params[:word][:word])
+    redirect_to word_path(id: params[:word][:letters)
   end
 
   def show
