@@ -10,10 +10,13 @@ gem 'turbolinks'
 gem 'unicorn'
 
 # configuration of environment variables
-gem "figaro"
+gem 'figaro'
 
 # erb replacement
-gem "haml"
+gem 'haml'
 
 # fork of bootstrap rails that plays nice with bootstrap 3
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails'
+
+# form_for replacement
+gem 'simple_form'
