@@ -9,7 +9,7 @@ $(document).on "click", ".say-word", (event) ->
     speech.rate = 1 # 0.1 to 9
     speech.pitch = 1 # 0 to 2, 1=normal
     speech.lang = "en-US"
-    speechSynthesis.speak(new SpeechSynthesisUtterance())
+    speechSynthesis.speak(speech)
 
 $ ->
 

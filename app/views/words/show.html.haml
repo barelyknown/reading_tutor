@@ -1,8 +1,11 @@
 = div_for @word do
   = render "words/form", word: @word
 
-  .well.syllables
-    %h2= render @word.syllables
+  .well.letters
+    %h2= @word.letters
+
+  .well.syllables-placeholder{data: { url: word_syllables_path(@word) } }
+    %h2 _____  ______
 
   .well.say-word{data: { word: @word.letters } }
     %h2
@@ -12,8 +15,8 @@
       %p Your browser can't talk.
 
   .row
-    - [@word.order - 1, @word.order + 1].each_with_index do |order, i|
-      .col-sm-6{class: "word-navigation", data: { url: word_path(id: order) } }
+    - [@word.frequency - 1, @word.frequency + 1].each_with_index do |frequency, i|
+      .col-sm-6{class: "word-navigation", data: { url: word_path(id: frequency) } }
         .well
           - icon_class = "glyphicon-" + (i == 0 ? "backward" : "forward")
           %h3

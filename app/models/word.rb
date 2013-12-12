@@ -12,16 +12,20 @@ class Word < ActiveRecord::Base
     end
   end
 
+  def self.find_by_frequency(frequency)
+    new letters: all_by_frequency[Integer(frequency) - 1]
+  end
+
   def self.random(n=2, min_corpus_count=100000)
     2.times.collect { all_by_frequency.sample }.collect { |w| new(letters: w) }
   end
 
-  def order
+  def frequency
     self.class.all_by_frequency.index(letters) + 1
   end
 
   def to_param
-    letters
+    frequency.to_s
   end
 
   def syllables

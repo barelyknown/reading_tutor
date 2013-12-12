@@ -1,4 +1,8 @@
 ReadingTutor::Application.routes.draw do
-  resources :words
   root to: "words#index"
+
+  resources :words do
+    resources :syllables
+  end
+  
 end
