@@ -1,3 +1,4 @@
 = div_for word_audio, style: "display: display" do
-  %audio{controls: "", oncanplay: "make_audio_controls_visible();", data: { milliseconds: word_audio.seconds * 1000 }}
-    %source{src: word_audio.file_url, type: "audio/mpeg"}
+  .word-audio-controls
+    %audio{controls: "", oncanplay: "make_audio_controls_visible();", data: { milliseconds: word_audio.seconds * 1000 }}
+      %source{src: word_audio.file_url, type: "audio/mpeg"}
