@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131211225745) do
+ActiveRecord::Schema.define(version: 20131212010043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "definitions", force: true do |t|
+    t.integer  "word_id"
+    t.string   "source"
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "syllables", force: true do |t|
     t.integer  "sequence"
@@ -22,6 +30,15 @@ ActiveRecord::Schema.define(version: 20131211225745) do
     t.string   "stress"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "word_audios", force: true do |t|
+    t.integer  "word_id"
+    t.decimal  "seconds"
+    t.string   "file_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attribution"
   end
 
   create_table "words", force: true do |t|

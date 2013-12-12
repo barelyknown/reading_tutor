@@ -23,3 +23,7 @@ gem 'simple_form'
 
 # wordnik api client
 gem 'wordnik'
+
+group :production do
+  gem "rails_12factor"
+end

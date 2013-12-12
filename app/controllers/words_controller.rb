@@ -9,7 +9,7 @@ class WordsController < ApplicationController
   end
 
   def show
-    @word = Word.new(word: params[:id])
+    @word = Word.new(letters: params[:id])
   end
 
 end

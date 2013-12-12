@@ -1,3 +1,21 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+play_audio = (audio, delay) ->
+  setTimeout((-> audio.play()), delay)
+
+(exports ? this).make_audio_controls_visible = ->
+  $(".say-word").removeClass("say-word-loading")
+  $(".say-word").addClass("say-word-loaded")
+  console.log "hi"
+
+$(document).on "click", "div.say-word", (event) ->
+  event.preventDefault()
+  delay = 0
+  $("audio").each (i) ->
+    play_audio($(this)[0], delay)
+    delay += parseInt($(this).data("milliseconds")) * 2
+
+$(document).on "click", "div.word-navigation", (event) ->
+  window.location = $(this).data("url")
+
+$ ->
+  if $("audio").length == 0
+    $("div.say-word").hide()

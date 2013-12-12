@@ -1,3 +1,1 @@
-= simple_form_for @word do |f|
-  = f.input :letters, label: false
-  = f.submit "Show Word", class: "btn btn-primary"
+= render "words/form", word: @word

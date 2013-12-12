@@ -1,0 +1,21 @@
+= render "words/form", word: @word
+
+.well
+  %h2.letters= @word.letters
+
+.well
+  %h2.syllables= render @word.syllables
+
+.well.say-word.say-word-loading
+  %h2  
+    %span.glyphicon.glyphicon-volume-up
+  = render @word.audios
+
+.row
+  - Word.random(2).each_with_index do |word, i|
+    .col-md-6{class: "word-navigation", data: { url: word_path(word) } }
+      .well
+        - icon_class = "glyphicon-" + (i == 0 ? "backward" : "forward")
+        %h3
+          %span.glyphicon{class: icon_class}
+
