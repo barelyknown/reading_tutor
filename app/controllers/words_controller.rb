@@ -2,7 +2,7 @@ class WordsController < ApplicationController
 
   def new
     @word = Word.random(1).first
-    redirect_to word_path(@word)
+    render :show
   end
 
   def create
