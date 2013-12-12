@@ -1,5 +1,9 @@
 class WordsController < ApplicationController
 
+  def index
+    redirect_to word_path(id: 1)
+  end
+
   def new
     @word = Word.random(1).first
     render :show
@@ -10,7 +14,8 @@ class WordsController < ApplicationController
   end
 
   def show
-    @word = Word.new(letters: params[:id])
+    id = params[:id].to_i == 0 ? Word.all_by_frequency.index(params[:id]) : params[:id].to_i - 1
+    @word = Word.new(letters: Word.all_by_frequency[id])
   end
 
 end

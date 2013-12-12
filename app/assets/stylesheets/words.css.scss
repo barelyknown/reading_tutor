@@ -1,20 +1,24 @@
-// Place all the styles related to the Words controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.word {
+  .well {
+    text-align: center;
+  }
+  .word-navigation {
+    cursor: pointer;
+  }
+  .say-word {
+    cursor: pointer;
+    .say-word-disabled-message {
+      display: none;
+    }
+  }
 
-.well {
-  text-align: center;
+  .say-word.disabled {
+    .glyphicon {
+      color: gray;
+    }
+    .say-word-disabled-message {
+      display: inline;
+    }
+  }
 }
 
-.word-navigation {
-  cursor: pointer;
-}
-
-.say-word-loading {
-  color: grey;
-}
-
-.say-word-loaded {
-  color: black;
-  cursor: pointer;
-}

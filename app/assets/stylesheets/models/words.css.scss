@@ -1,0 +1,13 @@
+.word {
+  .well { text-align: center; }
+  .word-navigation { cursor: pointer; }
+  .say-word {
+    cursor: pointer;
+    .say-word-disabled-message { display: none; }
+  }
+  .say-word.disabled {
+    .glyphicon { color: gray; }
+    .say-word-disabled-message { display: inline; }
+    cursor: default;
+  }
+}

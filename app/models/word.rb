@@ -4,10 +4,20 @@ class Word < ActiveRecord::Base
   has_many :audios, class_name: "WordAudio"
   has_many :definitions
 
-  def self.random(n=2, min_corpus_count=100000)
-    Wordnik.word.get_random_words(limit: n, min_corpus_count: min_corpus_count).collect do |w|
-      new(letters: w["word"])
+  cattr_accessor :all_by_frequency
+
+  def self.all_by_frequency
+    @all_by_frequency ||= Array.new.tap do |words|
+      CSV.foreach(Rails.root.join("db","seed","words.csv")) { |row| words << row[0] }
     end
+  end
+
+  def self.random(n=2, min_corpus_count=100000)
+    2.times.collect { all_by_frequency.sample }.collect { |w| new(letters: w) }
+  end
+
+  def order
+    self.class.all_by_frequency.index(letters) + 1
   end
 
   def to_param
