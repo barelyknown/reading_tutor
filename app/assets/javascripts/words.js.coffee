@@ -13,7 +13,7 @@ $(document).on "click", "div.say-word", (event) ->
     delay += parseInt($(this).data("milliseconds")) * 2
 
 $(document).on "click", "div.word-navigation", (event) ->
-  window.location = $(this).data("url")
+  Turbolinks.visit $(this).data("url")
 
 $ ->
   if $("audio").length == 0
