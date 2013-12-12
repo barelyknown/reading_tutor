@@ -6,7 +6,7 @@ $(document).on "click", ".say-word", (event) ->
     speech = new SpeechSynthesisUtterance()
     speech.text = $(this).data("word")
     speech.volume = 1 # 0 to 1
-    speech.rate = 1 # 0.1 to 9
+    speech.rate = 0.7 # 0.1 to 9
     speech.pitch = 1 # 0 to 2, 1=normal
     speech.lang = "en-US"
     speechSynthesis.speak(speech)
