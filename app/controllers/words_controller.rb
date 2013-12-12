@@ -1,7 +1,8 @@
 class WordsController < ApplicationController
 
   def new
-    @word = Word.new
+    @word = Word.random(1).first
+    redirect_to word_path(@word)
   end
 
   def create
