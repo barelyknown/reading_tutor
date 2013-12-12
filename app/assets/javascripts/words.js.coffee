@@ -4,7 +4,6 @@ play_audio = (audio, delay) ->
 (exports ? this).make_audio_controls_visible = ->
   $(".say-word").removeClass("say-word-loading")
   $(".say-word").addClass("say-word-loaded")
-  console.log "hi"
 
 $(document).on "click", "div.say-word", (event) ->
   event.preventDefault()
