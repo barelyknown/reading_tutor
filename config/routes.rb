@@ -7,6 +7,7 @@ ReadingTutor::Application.routes.draw do
 
   resources :words do
     resources :syllables
+    resources :definitions
   end
   
 end

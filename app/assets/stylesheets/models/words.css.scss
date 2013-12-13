@@ -1,18 +1,43 @@
 .word {
+
   .well {
     text-align: center;
   }
+
+  .panel-letters {
+    text-align: center;
+    .list-group {
+      color: gray;
+    }
+  }
+
+  button, a.btn {
+    width: 80%;
+
+    .glyphicon {
+      font-size: 14pt;
+    }    
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .letters {
+    font-size: 18pt;
+    text-align: center;
+  }
+
   .say-word {
     .say-word-disabled-message {
       display: none;
     }
-    button {
-      width: 33%;
-    }
   }
+
   .syllables-placeholder {
     cursor: pointer;
   }
+
   .say-word.disabled {
     .glyphicon {
       color: gray;
@@ -22,7 +47,5 @@
     }
     cursor: default;
   }
-  a:hover {
-    text-decoration: none;
-  }
+
 }

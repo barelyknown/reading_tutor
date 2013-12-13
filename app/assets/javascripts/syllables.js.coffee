@@ -1,5 +1,4 @@
-$(document).on "click", ".syllables-placeholder", (event) ->
+$(document).on "click", "button.show-syllables", (event) ->
   $.ajax(url: $(this).data("url"), dataType: "script").always (data) =>
-    $(this).html($(data.responseText).html())
-    $(this).removeClass("syllables-placeholder")
-    $(this).addClass("syllables")
+    $(this).closest(".word").find(".letters").html($(data.responseText).html())
+    $(this).addClass("disabled")

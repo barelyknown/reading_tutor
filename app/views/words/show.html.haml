@@ -1,35 +1,53 @@
 = div_for @word do
+
   = render "words/form", word: @word
 
-  .well.letters
-    %h2= @word.letters
-
-  .well.syllables-placeholder{data: { url: word_syllables_path(@word) } }
-    %h2 _____  ______
-
-  .well.say-word
-    %button.say-word.btn.btn-default{data: { word: @word.letters } }
-      %h2
-        %span.glyphicon.glyphicon-volume-up
-    .say-word-disabled-message
-      %p Sorry :(
-      %p Your browser can't talk.
+  .panel.panel-default.panel-letters
+    .panel-body
+      .letters
+        = @word.letters
 
   .row
-    - [@word.frequency - 1, @word.frequency + 1].each_with_index do |frequency, i|
-      .col-xs-6
-        .well
-          %h3
-            = link_to word_path(id: frequency) do
-              %span.glyphicon{class: "glyphicon-" + (i == 0 ? "backward" : "forward")}
+    .col-xs-4
+      .well
+        %button.btn.btn-default.show-syllables{data: { url: word_syllables_path(@word) } }
+          %span.glyphicon.glyphicon-resize-horizontal
+    .col-xs-4
+      .well
+        = link_to word_definitions_path(@word), class: "btn btn-default word-definitions", remote: true do
+          %span.glyphicon.glyphicon-list
+    .col-xs-4
+      .well
+        = link_to word_path(@word), class: "btn btn-default" do
+          %span.glyphicon.glyphicon-refresh
+
+  .row.word-navigation.say-word
+    .col-xs-4
+      .well
+        = link_to word_path(id: @word.frequency - 1), class: "btn btn-default" do
+          %span.glyphicon.glyphicon-backward
+    .col-xs-4
+      .well.say-word
+        %button.say-word.btn.btn-default{data: { word: @word.letters } }
+          %span.glyphicon.glyphicon-volume-up
+        .say-word-disabled-message
+          %p Sorry :(
+          %p Your browser can't talk.
+    .col-xs-4
+      .well
+        = link_to word_path(id: @word.frequency + 1), class: "btn btn-default" do
+          %span.glyphicon.glyphicon-forward
 
   .row.random-word-links
     .col-xs-4
       .well
-        %h2= link_to "common", common_word_path
+        = link_to common_word_path, class: "btn btn-default" do
+          %span.glyphicon.glyphicon-sort-by-attributes
     .col-xs-4
       .well
-        %h2= link_to "random", random_word_path
+        = link_to random_word_path, class: "btn btn-default" do
+          %span.glyphicon.glyphicon-random
     .col-xs-4
       .well
-        %h2= link_to "uncommon", uncommon_word_path
+        = link_to uncommon_word_path, class: "btn btn-default" do
+          %span.glyphicon.glyphicon-sort-by-attributes-alt
