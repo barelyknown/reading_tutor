@@ -11,4 +11,7 @@
     .say-word-disabled-message { display: inline; }
     cursor: default;
   }
+  a:hover {
+    text-decoration: none;
+  }
 }

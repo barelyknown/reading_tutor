@@ -8,28 +8,28 @@
     %h2 _____  ______
 
   .well.say-word{data: { word: @word.letters } }
-    %h2
-      %span.glyphicon.glyphicon-volume-up
+    %a
+      %h2
+        %span.glyphicon.glyphicon-volume-up
     .say-word-disabled-message
       %p Sorry :(
       %p Your browser can't talk.
 
   .row
     - [@word.frequency - 1, @word.frequency + 1].each_with_index do |frequency, i|
-      .col-xs-6{class: "word-navigation", data: { url: word_path(id: frequency) } }
+      .col-xs-6
         .well
-          - icon_class = "glyphicon-" + (i == 0 ? "backward" : "forward")
           %h3
-            %span.glyphicon{class: icon_class}
-
+            = link_to word_path(id: frequency) do
+              %span.glyphicon{class: "glyphicon-" + (i == 0 ? "backward" : "forward")}
 
   .row.random-word-links
     .col-xs-4
-      .well.random-word-link{data: { url: common_word_path }}
-        %h2 common
+      .well
+        %h2= link_to "common", common_word_path
     .col-xs-4
-      .well.random-word-link{data: { url: random_word_path } }
-        %h2 random    
+      .well
+        %h2= link_to "random", random_word_path
     .col-xs-4
-      .well.random-word-link{data: { url: uncommon_word_path } } 
-        %h2 uncommon
+      .well
+        %h2= link_to "uncommon", uncommon_word_path
