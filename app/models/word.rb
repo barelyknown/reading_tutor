@@ -16,8 +16,16 @@ class Word < ActiveRecord::Base
     new letters: all_by_frequency[Integer(frequency) - 1]
   end
 
-  def self.random(n=2, min_corpus_count=100000)
-    2.times.collect { all_by_frequency.sample }.collect { |w| new(letters: w) }
+  def self.random
+    new letters: all_by_frequency.sample
+  end
+
+  def self.common
+    new letters: all_by_frequency[0..1000].sample
+  end
+
+  def self.uncommon
+    new letters: all_by_frequency[(all_by_frequency.size / 4)..(all_by_frequency.size - 1)].sample
   end
 
   def frequency
@@ -47,10 +55,17 @@ private
   end
 
   def build_syllables
-    wordnik_syllables = Wordnik.word.get_hyphenation(canonical_form || letters)
-    case wordnik_syllables.size
-      when 0 then [Syllable.new(sequence: 0, letters: letters, stress: "stress")]
-      else wordnik_syllables.collect { |syllable| Syllable.new_from_wordnik(syllable) }
+    get_syllables.collect { |syllable| Syllable.new_from_wordnik(syllable) }
+  end
+
+  def get_syllables
+    wordnik_syllables = Wordnik.word.get_hyphenation(letters)
+    if wordnik_syllables.size <= 1
+      hyphenator.visualize(letters).split("-").collect.with_index do |syllable, i|
+        { "text" => syllable, "seq" => i, "stess" => "stress" }
+      end
+    else
+      wordnik_syllables
     end
   end
 
@@ -64,6 +79,10 @@ private
     Wordnik.word.get_definitions(letters, source_dictionaries: "wiktionary").collect do |definition|
       Definition.new_from_wordnik(definition)
     end
+  end
+
+  def hyphenator
+    Text::Hyphen.new(language: "en_us", left: 1, right: 1 )
   end
 
 end

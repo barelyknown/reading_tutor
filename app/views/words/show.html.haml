@@ -16,9 +16,20 @@
 
   .row
     - [@word.frequency - 1, @word.frequency + 1].each_with_index do |frequency, i|
-      .col-sm-6{class: "word-navigation", data: { url: word_path(id: frequency) } }
+      .col-xs-6{class: "word-navigation", data: { url: word_path(id: frequency) } }
         .well
           - icon_class = "glyphicon-" + (i == 0 ? "backward" : "forward")
           %h3
             %span.glyphicon{class: icon_class}
 
+
+  .row.random-word-links
+    .col-xs-4
+      .well{data: { url: common_word_path }}
+        %h2 common
+    .col-xs-4
+      .well{data: { url: random_word_path } }
+        %h2 random    
+    .col-xs-4
+      .well{data: { url: uncommon_word_path } } 
+        %h2 uncommon

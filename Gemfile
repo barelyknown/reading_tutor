@@ -25,6 +25,9 @@ gem 'simple_form'
 # wordnik api client
 gem 'wordnik'
 
+# backup hyphenation solution
+gem 'text-hyphen'
+
 group :production do
   gem "rails_12factor"
 end
