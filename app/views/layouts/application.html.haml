@@ -8,7 +8,14 @@
   = csrf_meta_tags
 
   %body
-
+    %header.navbar.navbar-default
+      .container
+        .navbar-header
+          = link_to "Reading Tutor", root_path, class: "navbar-brand"
+        %nav.collapse.navbar-collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a Helping you learn to read.
     .container
       .row
         .col-md-12
