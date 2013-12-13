@@ -11,7 +11,7 @@ $(document).on "click", ".say-word", (event) ->
     speech.lang = "en-US"
     speechSynthesis.speak(speech)
 
-$(document).on "click", ".random-word-links .well", (event) ->
+$(document).on "click", ".random-word-link", (event) ->
   Turbolinks.visit $(this).data("url")
 
 $ ->
