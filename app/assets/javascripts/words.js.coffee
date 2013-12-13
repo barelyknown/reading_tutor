@@ -1,4 +1,4 @@
-$(document).on "click", ".say-word", (event) ->
+$(document).on "click", "button.say-word", (event) ->
   if window["speechSynthesis"]?
     speech = new SpeechSynthesisUtterance()
     speech.text = $(this).data("word")

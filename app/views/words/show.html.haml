@@ -7,8 +7,8 @@
   .well.syllables-placeholder{data: { url: word_syllables_path(@word) } }
     %h2 _____  ______
 
-  .well.say-word{data: { word: @word.letters } }
-    %a
+  .well.say-word
+    %button.say-word.btn.btn-default{data: { word: @word.letters } }
       %h2
         %span.glyphicon.glyphicon-volume-up
     .say-word-disabled-message

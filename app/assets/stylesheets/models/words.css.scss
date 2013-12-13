@@ -1,12 +1,25 @@
 .word {
-  .well { text-align: center; }
-  .say-word {
-    .say-word-disabled-message { display: none; }
+  .well {
+    text-align: center;
   }
-  .syllables-placeholder { cursor: pointer; }
+  .say-word {
+    .say-word-disabled-message {
+      display: none;
+    }
+    button {
+      width: 33%;
+    }
+  }
+  .syllables-placeholder {
+    cursor: pointer;
+  }
   .say-word.disabled {
-    .glyphicon { color: gray; }
-    .say-word-disabled-message { display: inline; }
+    .glyphicon {
+      color: gray;
+    }
+    .say-word-disabled-message {
+      display: inline;
+    }
     cursor: default;
   }
   a:hover {
