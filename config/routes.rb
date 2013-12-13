@@ -10,4 +10,6 @@ ReadingTutor::Application.routes.draw do
     resources :definitions
   end
   
+  resources :speech
+
 end
